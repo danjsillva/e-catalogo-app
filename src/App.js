@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import * as RNFS from 'react-native-fs';
 
 import Sync from "./pages/Sync";
+import Product from "./components/Product";
 
 import RealmConnection from "./config/realm";
 
@@ -14,11 +16,11 @@ export default function App(props) {
 
   useEffect(() => {
     if (!showModalSync) {
-      HandleFetchCategorias();
+      HandleFetch();
     }
   }, [showModalSync]);
 
-  async function HandleFetchCategorias() {
+  async function HandleFetch() {
     const realm = await RealmConnection();
 
     realm.write(() => {
@@ -46,6 +48,12 @@ export default function App(props) {
       <Text>{JSON.stringify(categorias.length)}</Text>
       <Text>{JSON.stringify(laboratorios.length)}</Text>
       <Text>{JSON.stringify(produtos.length)}</Text>
+
+      <FlatList
+        data={produtos}
+        keyExtractor={produto => produto.id.toString()}
+        renderItem={({ item }) => <Product data={item} />}
+      />
 
       <Sync showModal={showModalSync} onClose={() => setShowModalSync(false)} />
     </View>
