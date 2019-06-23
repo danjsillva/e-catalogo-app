@@ -5,8 +5,9 @@ export const ProdutoSchema = {
     id: { type: "int", indexed: true },
     nome: "string",
     ean: "string",
-    url_imagem: "string",
-    laboratorios_id: "int",
-    descricao: "string"
+    imagem: "string",
+    laboratorios: "string",
+    descricao: "string",
+    categorias: "string?"
   }
 };

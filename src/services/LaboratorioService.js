@@ -1,15 +1,15 @@
 import API from "../config/api";
 
 const LaboratorioService = {
-  FetchLaboratorios: async () => {
+  FetchLaboratorios: async connection => {
     try {
-      let response = (await API.get("/laboratorios")).data;
+      let response = (await API.get(`${connection}/laboratorios`)).data;
 
       return response;
     } catch (error) {
       console.log(error);
 
-      return [];
+      return false;
     }
   }
 };
