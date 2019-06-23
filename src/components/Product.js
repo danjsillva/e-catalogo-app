@@ -35,7 +35,9 @@ export default function Product(props) {
           style={{ marginBottom: 10 }}
         />
 
-        <Text style={{ fontWeight: "bold" }}>Laboratório</Text>
+        <TouchableOpacity>
+          <Text style={{ fontWeight: "bold" }}>{props.data.laboratorios}</Text>
+        </TouchableOpacity>
         <Text>{props.data.descricao}</Text>
       </View>
     </View>
