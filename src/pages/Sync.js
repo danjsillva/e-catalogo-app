@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Modal,
@@ -6,7 +6,8 @@ import {
   Button,
   Text,
   Alert,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
 import * as RNFS from "react-native-fs";
 
@@ -18,10 +19,7 @@ import RealmConnection from "../config/realm";
 
 import { apiURL } from "../config/api";
 
-import { AppContext } from "../App";
-
-export default function Sync(props) {
-  const context = useContext(AppContext);
+const Sync = props => {
   const [conexao, setConexao] = useState("text");
   const [teste, setTeste] = useState("");
   const [progress, setProgress] = useState({
@@ -126,7 +124,7 @@ export default function Sync(props) {
   }
 
   return (
-    <Modal visible={props.showModal} animationType="slide">
+    <>
       <View style={styles.container}>
         <TextInput
           value={conexao}
@@ -146,9 +144,20 @@ export default function Sync(props) {
 
         <Button title="Fechar" onPress={() => props.onClose()} />
       </View>
-    </Modal>
+    </>
   );
-}
+};
+
+Sync.navigationOptions = ({ navigation }) => ({
+  title: "Sincronizar",
+  headerRight: (
+    <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
+      <Text>Fechar</Text>
+    </TouchableOpacity>
+  )
+});
+
+export default Sync;
 
 const styles = StyleSheet.create({
   container: {
