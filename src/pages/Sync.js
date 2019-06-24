@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import * as RNFS from "react-native-fs";
 
 import CategoriaService from "../services/CategoriaService";
@@ -141,8 +142,6 @@ const Sync = props => {
         </Text>
 
         <Text style={{ color: "#666" }}>{progress.status}</Text>
-
-        <Button title="Fechar" onPress={() => props.onClose()} />
       </View>
     </>
   );
@@ -150,9 +149,13 @@ const Sync = props => {
 
 Sync.navigationOptions = ({ navigation }) => ({
   title: "Sincronizar",
+  headerLeft: null,
   headerRight: (
-    <TouchableOpacity onPress={() => navigation.navigate("Feed")}>
-      <Text>Fechar</Text>
+    <TouchableOpacity
+      onPress={() => navigation.push("Feed")}
+      style={{ marginHorizontal: 10 }}
+    >
+      <Icon name="close" size={20} />
     </TouchableOpacity>
   )
 });
@@ -163,7 +166,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    // alignItems: "center"
     padding: 10
   },
 
