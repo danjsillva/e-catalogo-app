@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import * as RNFS from "react-native-fs";
 
 import CategoriaService from "../services/CategoriaService";
@@ -155,7 +155,7 @@ Sync.navigationOptions = ({ navigation }) => ({
       onPress={() => navigation.push("Feed")}
       style={{ marginHorizontal: 10 }}
     >
-      <Icon name="close" size={20} />
+      <Icon name="times" size={20} />
     </TouchableOpacity>
   )
 });
@@ -166,7 +166,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 10
+    padding: 10,
+    backgroundColor: "#fafafa"
   },
 
   input: {

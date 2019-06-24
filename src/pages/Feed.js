@@ -8,7 +8,7 @@ import {
   Alert
 } from "react-native";
 import Swiper from "react-native-swiper";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 import Product from "../components/Product";
 
@@ -50,8 +50,8 @@ const Feed = props => {
         showsButtons={false}
         index={1}
       >
-        <View style={styles.slide3}>
-          <Text>Filtros</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>Filtros</Text>
 
           <TouchableOpacity>
             <Text
@@ -86,7 +86,7 @@ Feed.navigationOptions = ({ navigation }) => ({
       onPress={() => navigation.push("Sync")}
       style={{ marginHorizontal: 10 }}
     >
-      <Icon name="menu" size={20} sty />
+      <Icon name="bars" size={20} />
     </TouchableOpacity>
   )
 });
@@ -98,5 +98,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "#fafafa"
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold"
   }
 });
